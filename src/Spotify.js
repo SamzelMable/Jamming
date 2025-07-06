@@ -1,8 +1,5 @@
 const clientId = '11cee0b5382a406f930c84c51920adc4';
-const redirectUri =
-  window.location.hostname === 'localhost'
-    ? 'http://localhost:3000/'
-    : 'https://SamzelMable.github.io/Jamming/';
+const redirectUri = 'https://SamzelMable.github.io/Jammming/';
 
 let accessToken = '';
 
