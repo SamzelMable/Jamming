@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
 
 function SearchBar({ onSearch }) {
-  const [term, setTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleChange = (e) => setTerm(e.target.value);
+  const handleTermChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   const search = () => {
-    onSearch(term);
+    if (searchTerm.trim()) {
+      onSearch(searchTerm);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      search();
+      event.preventDefault(); // Stop form submission on Enter
+    }
   };
 
   return (
     <div className="SearchBar">
-      <input
-        placeholder="Enter a song, artist, or album"
-        value={term}
-        onChange={handleChange}
+      <input 
+        placeholder="Enter A Song, Album, or Artist" 
+        value={searchTerm}
+        onChange={handleTermChange}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={search}>SEARCH</button>
     </div>
