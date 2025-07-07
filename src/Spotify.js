@@ -78,6 +78,42 @@ const Spotify = {
       album: track.album.name,
       uri: track.uri
     }));
+  },
+
+  async savePlaylist(name, trackUris) {
+    if (!name || !trackUris.length) return;
+
+    const token = await this.getAccessToken();
+
+    // Get the user's ID
+    const userResponse = await fetch('https://api.spotify.com/v1/me', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    const userData = await userResponse.json();
+    const userId = userData.id;
+
+    // Create a new playlist
+    const createResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: name })
+    });
+    const playlistData = await createResponse.json();
+
+    // Add tracks to the new playlist
+    await fetch(`https://api.spotify.com/v1/playlists/${playlistData.id}/tracks`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ uris: trackUris })
+    });
   }
 };
 
