@@ -8,10 +8,11 @@ function SearchBar({ onSearch }) {
   };
 
   const search = () => {
-    if (searchTerm.trim()) {
-      onSearch(searchTerm);
-    }
-  };
+  if (searchTerm.trim()) {
+    console.log("Searching for:", searchTerm); // 👈 add this
+    onSearch(searchTerm);
+  }
+};
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {

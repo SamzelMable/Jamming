@@ -1,5 +1,5 @@
 const clientId = '11cee0b5382a406f930c84c51920adc4';
-const redirectUri = 'https://samzelmable.github.io/Jammming/';
+const redirectUri = 'https://samzelmable.github.io/Jamming/';
 let accessToken;
 
 const Spotify = {

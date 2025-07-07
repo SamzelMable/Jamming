@@ -32,7 +32,7 @@ function App() {
     setPlaylistName(name);
   };
 
-  // Save playlist to Spotify (you’ll need to implement Spotify.savePlaylist)
+  // Save playlist to Spotify
   const savePlaylist = () => {
     const trackUris = playlistTracks.map(track => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
