@@ -69,9 +69,11 @@ h1 {
   background-color: var(--secondary-bg);
   padding: 1.5rem;
   border-radius: var(--radius);
-  width: 100%;
+  width: calc(100% - 40px); /* Prevent full overflow */
   max-width: 500px;
+  box-sizing: border-box;
 }
+
 
 .Track {
   display: flex;
@@ -108,6 +110,7 @@ h1 {
 
 .Playlist input.playlist-name {
   width: 100%;
+  box-sizing: border-box;
   padding: 0.75rem;
   font-size: 1.1rem;
   font-family: var(--font-main);
@@ -117,6 +120,7 @@ h1 {
   border: 1px solid #333;
   border-radius: var(--radius);
 }
+
 
 .save-playlist {
   margin-top: 1.5rem;
@@ -135,4 +139,24 @@ h1 {
 .save-playlist:hover {
   background-color: #1ed760;
   transform: scale(1.02);
+}
+
+@media (max-width: 600px) {
+  .SearchBar input {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .SearchBar button {
+    width: 100%;
+  }
+
+  .App-playlist {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .TrackList, .Playlist {
+    width: 100%;
+  }
 }
