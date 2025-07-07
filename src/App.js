@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 import Spotify from './Spotify';
 import SearchBar from './components/SearchBar';
 import TrackList from './components/TrackList';
