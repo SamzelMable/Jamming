@@ -1,159 +1,342 @@
 :root {
-  --primary-bg: #121212;
-  --secondary-bg: #3D3D3D;
-  --light-gray: #A6A6A6;
-  --white: #F5F5F5;
-  --font-main: 'Fira Code', monospace;
-  --font-secondary: 'Open Sans', sans-serif;
+    --primary-bg: #121212;
+    --secondary-bg: #3D3D3D;
+    --light-gray: #A6A6A6;
+    --white: #F5F5F5;
+    --font-main: 'Fira Code', monospace;
+    --font-secondary: 'Open Sans', sans-serif;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-secondary);
-  background-color: var(--primary-bg);
+    font-family: var(--font-secondary);
+    background-color: var(--primary-bg);
+    color: var(--white);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-family: var(--font-main);
+    font-size: 2.5rem;
+}
+
+header p {
+    color: var(--light-gray);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.skills-section {
+    flex: 1;
+    min-width: 250px;
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.skills-section h2 {
+    font-family: var(--font-main);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.skills-section ul {
+    list-style: none;
+}
+
+.skills-section ul li {
+    margin-bottom: 10px;
+    color: var(--light-gray);
+}
+
+.skills-section:nth-child(2) {
+    background-color: var(--white);
+    color: #000;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.profile-text {
+    max-width: 600px;
+}
+
+.profile-text h2 {
+    font-family: var(--font-main);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.projects {
+    margin-top: 40px;
+}
+
+.projects .project {
+    background-color: var(--white);
+    color: #000;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scaling and shadow */
+}
+
+.projects .project:nth-child(even) {
+    background-color: var(--secondary-bg);
+    color: var(--white);
+}
+
+.projects .project h3 {
+    font-family: var(--font-main);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.projects .project p {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.projects .project:nth-child(even) p {
+    color: var(--light-gray);
+}
+
+.projects .project a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+}
+
+.projects .project:nth-child(even) a {
+    color: var(--white);
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.projects .project a:hover {
+    color: #555;
+    border-bottom: 2px solid #000;
+}
+
+.projects .project:nth-child(even) a:hover {
+    color: var(--light-gray);
+    border-bottom: 2px solid var(--white);
+}
+
+/* Add hover scaling and shadow effect */
+.projects .project:hover {
+    transform: scale(1.05); /* Slight scaling */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+/* Modal Background Overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 10000; /* On top of everything */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scrolling if needed */
+  background-color: rgba(0, 0, 0, 0.7); /* only background translucent */
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #fff;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-content img {
+  max-width: 100%;      /* Don't exceed modal width */
+  max-height: 60vh;     /* Limit height to 60% of viewport height */
+  height: auto;         /* Maintain aspect ratio */
+  margin-bottom: 15px;
+  border-radius: 8px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.socials {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.socials a.email-link {
+  margin-left: 15px;
   color: var(--white);
-  line-height: 1.6;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.App {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-h1 {
-  font-family: var(--font-main);
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--white);
-}
-
-/* SearchBar styling */
-.SearchBar {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.SearchBar input {
-  width: 60%;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 6px 0 0 6px;
-  font-size: 1rem;
-  background-color: var(--secondary-bg);
-  color: var(--white);
-  font-family: var(--font-secondary);
-}
-
-.SearchBar input::placeholder {
+.socials a.email-link:hover {
   color: var(--light-gray);
 }
 
-.SearchBar button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 0 6px 6px 0;
-  background-color: var(--white);
-  color: var(--primary-bg);
-  font-weight: bold;
-  cursor: pointer;
-  font-family: var(--font-main);
-  transition: background-color 0.3s ease;
+.socials a {
+    display: inline-block; /* Enables proper scaling */
+    margin: 0 10px;
+    color: var(--white);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
 }
 
-.SearchBar button:hover {
-  background-color: var(--light-gray);
+.socials a:hover {
+    color: var(--light-gray); /* Existing hover color */
+    transform: scale(1.2); /* Add hover scale effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add hover shadow effect */
 }
 
-/* Playlist and TrackList container */
-.App-playlist {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--light-gray);
 }
 
-/* TrackList and Playlist common styles */
-.TrackList, .Playlist {
-  background-color: var(--secondary-bg);
-  border-radius: 8px;
-  padding: 1rem;
-  flex: 1 1 300px;
-  max-width: 450px;
-  color: var(--white);
-  font-family: var(--font-secondary);
-}
+/* -------- JAMMMING SPECIFIC STYLES -------- */
 
 /* Playlist name input */
-.Playlist input.playlist-name-input {
+.Playlist input.playlist-name {
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  font-family: var(--font-main);
+  padding: 10px 15px;
   font-size: 1.2rem;
+  font-family: var(--font-main);
   border: none;
   border-radius: 6px;
-  background-color: var(--primary-bg);
+  margin-bottom: 15px;
+  background-color: var(--secondary-bg);
   color: var(--white);
-}
-
-/* Track item styling */
-.Track {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--light-gray);
-}
-
-.Track:last-child {
-  border-bottom: none;
-}
-
-.Track-details {
-  flex-grow: 1;
-  font-size: 0.95rem;
-}
-
-.Track-details span {
-  display: block;
-  color: var(--light-gray);
-}
-
-.Track button {
-  background-color: transparent;
-  border: 2px solid var(--white);
-  color: var(--white);
-  font-family: var(--font-main);
-  font-weight: bold;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.Track button:hover {
-  background-color: var(--white);
-  color: var(--primary-bg);
-}
-
-/* Save Playlist button */
-.Playlist button.save-playlist {
-  margin-top: 1rem;
-  width: 100%;
-  padding: 0.75rem;
-  background-color: var(--white);
-  color: var(--primary-bg);
-  font-family: var(--font-main);
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  outline: none;
   transition: background-color 0.3s ease;
+}
+
+.Playlist input.playlist-name:focus {
+  background-color: #555;
+}
+
+/* Save playlist button */
+.Playlist button.save-playlist {
+  background-color: #1db954; /* Spotify green */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(29, 185, 84, 0.5);
 }
 
 .Playlist button.save-playlist:hover {
-  background-color: var(--light-gray);
-  color: var(--primary-bg);
+  background-color: #1ed760;
+  box-shadow: 0 6px 12px rgba(30, 215, 96, 0.7);
 }
+
+/* Add some spacing and styling for the container of the playlist and tracklist */
+.App-playlist {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+/* SearchBar styles */
+.SearchBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.SearchBar input {
+  width: 300px;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-family: var(--font-secondary);
+}
+
+.SearchBar button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(29, 185, 84, 0.5);
+}
+
+.SearchBar button:hover {
+  background-color: #1ed760;
+  box-shadow: 0 6px 12px rgba(30, 215, 96, 0.7);
+}
+
+/* TrackList and Playlist styling placeholders */
+/* You can style TrackList and Playlist containers similarly to fit your layout */
