@@ -77,36 +77,43 @@ h1 {
 
 .Track {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   border-bottom: 1px solid #333;
-  padding: 0.75rem 0;
+  padding: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .Track h3 {
   margin: 0;
   font-family: var(--font-main);
   font-size: 1rem;
+  color: var(--white);
+  word-wrap: break-word;
 }
 
 .Track p {
-  margin: 0;
-  color: var(--text-muted);
+  margin: 0.25rem 0 0;
+  color: var(--light-gray);
   font-size: 0.875rem;
 }
 
 .Track button {
+  margin-top: 0.5rem;
   background: none;
   border: none;
   font-size: 1.2rem;
-  color: var(--accent);
+  color: var(--accent, #1DB954); /* fallback green */
   cursor: pointer;
-  transition: var(--transition);
+  transition: transform 0.2s ease;
 }
 
 .Track button:hover {
   transform: scale(1.2);
 }
+
 
 .Playlist input.playlist-name {
   width: 100%;
