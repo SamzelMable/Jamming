@@ -68,16 +68,16 @@ const Spotify = {
       }
     });
 
-    const jsonResponse = await response.json();
-    if (!jsonResponse.tracks) return [];
-
     return jsonResponse.tracks.items.map((track) => ({
-      id: track.id,
-      name: track.name,
-      artist: track.artists[0].name,
-      album: track.album.name,
-      uri: track.uri
+        id: track.id,
+        name: track.name,
+        artist: track.artists[0].name,
+        album: track.album.name,
+        uri: track.uri,
+        previewUrl: track.preview_url, // 👈 new
+        albumImage: track.album.images[0]?.url // 👈 new (sometimes empty)
     }));
+
   },
 
   async savePlaylist(name, trackUris) {

@@ -1,20 +1,32 @@
 import React from 'react';
 
 function Track({ track, onAdd, onRemove, isRemoval }) {
-  const addTrack = () => {
-    onAdd(track);
-  };
-
-  const removeTrack = () => {
-    onRemove(track);
-  };
+  const addTrack = () => onAdd(track);
+  const removeTrack = () => onRemove(track);
 
   return (
     <div className="Track">
+      {/* Album Cover */}
+      {track.albumImage && (
+        <img
+          src={track.albumImage}
+          alt={`${track.name} album cover`}
+          className="Track-image"
+        />
+      )}
+
       <div className="Track-information">
         <h3>{track.name}</h3>
         <p>{track.artist} | {track.album}</p>
+
+        {/* Preview sample */}
+        {track.previewUrl && (
+          <audio controls src={track.previewUrl} className="Track-preview">
+            Your browser does not support audio playback.
+          </audio>
+        )}
       </div>
+
       {isRemoval ? (
         <button onClick={removeTrack}>-</button>
       ) : (
