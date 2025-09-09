@@ -1,4 +1,5 @@
 import React from 'react';
+import './Track.css'; // optional if you have a separate CSS file
 
 function Track({ track, onAdd, onRemove, isRemoval }) {
   const addTrack = () => onAdd(track);
@@ -19,7 +20,7 @@ function Track({ track, onAdd, onRemove, isRemoval }) {
         <h3>{track.name}</h3>
         <p>{track.artist} | {track.album}</p>
 
-        {/* Preview sample */}
+        {/* Audio Preview */}
         {track.previewUrl && (
           <audio controls src={track.previewUrl} className="Track-preview">
             Your browser does not support audio playback.
