@@ -9,7 +9,7 @@ function SearchBar({ onSearch }) {
 
   const search = () => {
   if (searchTerm.trim()) {
-    console.log("Searching for:", searchTerm); // 👈 add this
+    console.log("Searching for:", searchTerm);
     onSearch(searchTerm);
   }
 };

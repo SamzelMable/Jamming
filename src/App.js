@@ -16,7 +16,7 @@ function App() {
     setSearchResults(results);
   };
 
-  // Add a track to the playlist if it isn't already there
+  // Add a track to the playlist
   const addTrack = (track) => {
     if (!playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
       setPlaylistTracks(prevTracks => [...prevTracks, track]);
