@@ -68,16 +68,19 @@ const Spotify = {
       }
     });
 
-    return jsonResponse.tracks.items.map((track) => ({
-        id: track.id,
-        name: track.name,
-        artist: track.artists[0].name,
-        album: track.album.name,
-        uri: track.uri,
-        previewUrl: track.preview_url, // 👈 new
-        albumImage: track.album.images[0]?.url // 👈 new (sometimes empty)
-    }));
+    const jsonResponse = await response.json(); // ✅ FIXED: define jsonResponse
 
+    if (!jsonResponse.tracks) return [];
+
+    return jsonResponse.tracks.items.map((track) => ({
+      id: track.id,
+      name: track.name,
+      artist: track.artists[0].name,
+      album: track.album.name,
+      uri: track.uri,
+      previewUrl: track.preview_url,       // ✅ Added preview
+      albumImage: track.album.images[0]?.url // ✅ Added album cover
+    }));
   },
 
   async savePlaylist(name, trackUris) {
